@@ -1,6 +1,6 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { Hero } from "@/components/Hero";
-import shareImage from "@/components/Hero/pinky-wave.jpg";
+import shareImage from "@/components/Hero/pinky-wave.png";
 
 const NAME = "Pinky Lalwani";
 const TITLE = "Pinky Lalwani | Full-Stack React Developer";
