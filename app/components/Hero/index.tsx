@@ -5,7 +5,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import waveImage from "./pinky-wave.jpg";
+import waveImage from "./pinky-wave.png";
 import { useIntroReady } from "@/components/Intro/IntroProvider";
 import {
   DURATION,
