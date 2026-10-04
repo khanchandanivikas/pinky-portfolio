@@ -1,6 +1,4 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { Contact } from "@/components/Contact";
-import { SOCIAL_LINKS } from "@/components/Footer/SocialIcon";
 import { Hero } from "@/components/Hero";
 import shareImage from "@/components/Hero/pinky-wave.jpg";
 
@@ -69,20 +67,13 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
           "Figma",
           "Web design",
         ],
-        sameAs: SOCIAL_LINKS.map((link) => link.href).filter((href) =>
-          href.startsWith("http"),
-        ),
       },
     },
   ];
 };
 
 const Index = () => {
-  return (
-    <>
-      <Hero />
-    </>
-  );
+  return <Hero />;
 };
 
 export default Index;
