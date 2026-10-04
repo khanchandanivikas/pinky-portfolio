@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. See DESIGN_SYSTEM.md for usage rules.
+ * z-index scale: header z-40, preloader z-50. Nothing else uses z above 10.
+ */
+@theme {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+
+  --color-bg: #f3f3f1;
+  --color-panel: #fafaf8;
+  --color-surface: #ffffff;
+  --color-ink: #121212;
+  --color-muted: #5f5f5a;
+  --color-line: #dcdcd6;
+  --color-accent: #1f2a5c;
+  --color-danger: #a3262a;
+  --color-online: #22c55e;
+
+  --radius-pill: 9999px;
+  --radius-card: 24px;
+  --radius-field: 20px;
+  --radius-media: 16px;
+
+  --shadow-card: 0 30px 60px -30px rgb(31 42 92 / 0.22);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --spacing-header: 4.5rem;
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+}
+
+@utility section-padding-x {
+  padding-inline: var(--section-padding-x);
+}
+
+@utility section-gap {
+  margin-block: var(--section-gap);
+}
+
+@utility meta-label {
+  font-size: 12px;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@utility type-display {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+@layer base {
+  :root {
+    --section-padding-x: 1rem;
+    --section-gap: 6rem;
+
+    @media (width >= 48rem) {
+      --section-padding-x: 2rem;
+      --section-gap: 9rem;
+    }
+  }
+
+  html {
+    scroll-padding-top: var(--spacing-header);
+    background-color: var(--color-bg);
+
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  [tabindex="-1"]:focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-pill px-6 text-sm font-medium whitespace-nowrap transition-[translate,scale,color,background-color,border-color] duration-200 ease-out-expo hover:-translate-y-px active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60 motion-reduce:transition-none motion-reduce:hover:translate-y-0;
+  }
+
+  .btn-primary {
+    @apply bg-ink text-bg hover:bg-ink/85;
+  }
+
+  .btn-outline {
+    @apply border border-line text-ink hover:border-ink;
+  }
+
+  .chip {
+    @apply inline-flex min-h-10 items-center rounded-pill border border-line bg-panel px-4 text-sm transition-[translate,border-color] duration-200 ease-out-expo hover:-translate-y-0.5 hover:border-ink/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0;
+  }
+
+  .text-link {
+    @apply underline decoration-line decoration-1 underline-offset-4 transition-colors duration-200 hover:text-accent hover:decoration-accent;
+  }
+
+  .field {
+    @apply block min-h-12 w-full rounded-pill border border-line bg-surface px-5 text-base text-ink transition-colors duration-200 placeholder:text-muted/70 focus:border-accent focus:shadow-[inset_0_0_0_1px_var(--color-accent)] focus:outline-none aria-invalid:border-danger aria-invalid:focus:border-danger aria-invalid:focus:shadow-[inset_0_0_0_1px_var(--color-danger)];
+  }
+}
